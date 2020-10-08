@@ -1,0 +1,100 @@
+Find Number in an Unsorted Array
+
+
+'use strict';
+
+const fs = require('fs');
+
+process.stdin.resume();
+process.stdin.setEncoding('utf-8');
+
+let inputString = '';
+let currentLine = 0;
+
+process.stdin.on('data', function(inputStdin) {
+    inputString += inputStdin;
+});
+
+process.stdin.on('end', function() {
+    inputString = inputString.split('\n');
+
+    main();
+});
+
+function readLine() {
+    return inputString[currentLine++];
+}
+
+
+
+/*
+ * Complete the 'findNumber' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts following parameters:
+ *  1. INTEGER_ARRAY arr
+ *  2. INTEGER k
+ */
+
+function findNumber(arr, k) {
+    var n = arr.includes(k);
+    if (n == true) {
+        return "YES";
+    }else {
+        return "NO";
+    }
+
+}
+
+function main() {
+    const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
+
+    const arrCount = parseInt(readLine().trim(), 10);
+
+    let arr = [];
+
+    for (let i = 0; i < arrCount; i++) {
+        const arrItem = parseInt(readLine().trim(), 10);
+        arr.push(arrItem);
+    }
+
+    const k = parseInt(readLine().trim(), 10);
+
+    const result = findNumber(arr, k);
+
+    ws.write(result + '\n');
+
+    ws.end();
+}
+
+
+O(n) solution
+
+
+
+
+Python Solution
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+
+#
+# Complete the 'findNumber' function below.
+#
+# The function is expected to return a STRING.
+# The function accepts following parameters:
+#  1. INTEGER_ARRAY arr
+#  2. INTEGER k
+#
+
+def findNumber(arr, k):
+    for i in arr:
+        if(i==k):
+            return "YES"
+if __name__ == '__main__':
